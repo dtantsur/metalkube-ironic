@@ -60,12 +60,8 @@ COPY ./runmariadb.sh /bin/runmariadb
 COPY ./configure-ironic.sh /bin/configure-ironic.sh
 COPY ./ironic-common.sh /bin/ironic-common.sh
 
-# TODO(dtantsur): remove this script when we stop supporting running both
-# API and conductor processes via one entry point.
-COPY ./runironic.sh /bin/runironic
-
 COPY ./dnsmasq.conf.j2 /etc/dnsmasq.conf.j2
 COPY ./inspector.ipxe /tmp/inspector.ipxe
 COPY ./dualboot.ipxe /tmp/dualboot.ipxe
 
-ENTRYPOINT ["/bin/runironic"]
+ENTRYPOINT ["/bin/runironic-api"]
